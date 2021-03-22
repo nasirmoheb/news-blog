@@ -1,0 +1,44 @@
+doctype html
+head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Node.js News
+    link(rel='stylesheet' href='/css/styles.css')
+    link(href='https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap' rel='stylesheet')
+header.header
+    a.header__logo(href="/") News
+    .header__search
+        form(action='/' method='POST')
+            input(type='text' name='search' placeholder='Search for news' required='')
+            input(type='submit' value='Search')
+.top-world
+    h2 Top Technology News From Web
+
+.content-wrapper
+    each article in articles
+        .news-card
+            a.news-card__card-link(href='#')
+            img.news-card__image(src=`${article.urlToImage}` alt='')
+            .news-card__text-wrapper
+                h2.news-card__title= `${article.title.length>100? article.title.substring(0, 100) : article.title }`
+                .news-card__post-date= `${article.publishedAt}`
+                .news-card__details-wrapper
+                    p.news-card__excerpt= `${article.description}`
+                    a.news-card__read-more(href=`${article.url}` target="_blank")
+                        | Read more 
+                        i &rarr;
+.top-world
+    h2 Top Technology News From My Blog
+.content-wrapper
+    each item in news
+        .news-card
+            a.news-card__card-link(href='#')
+            img.news-card__image(src=`${item.urlToImage}` alt='')
+            .news-card__text-wrapper
+                h2.news-card__title= `${item.title.length>100? item.title.substring(0, 100) : item.title }`
+                .news-card__post-date= `${item.publishedAt}`
+                .news-card__details-wrapper
+                    p.news-card__excerpt= `${item.description}`
+                    a.news-card__read-more(href=`/news/${item.slug}` target="_blank")
+                        | Read more 
+                        i &rarr;

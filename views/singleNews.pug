@@ -1,0 +1,21 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  title Block Formatting Context
+  link(rel='stylesheet' href='/css/styles.css')
+header.header
+  .header__logo News
+  .header__search
+    form(action='/' method='POST')
+      input(type='text' name='search' placeholder='Search for news' required='')
+      input(type='submit' value='Search')
+.wrapper
+  .posts
+    .title
+      p= `${news.title}`
+    .date=`${news.publishedAt}`
+    .image
+      img(src=`${news.urlToImage}` alt=`${news.title}`)
+    .text
+      p
+        b= `${news.content}` 
